@@ -1,0 +1,92 @@
+<smart-panel [fullscreenable]="true" id="panel-1">
+  <h2 panelTitle>
+    {{ title }}
+  </h2>
+  <div panelToolbar>
+    <button
+      class="btn btn-primary btn-icon btn-sm mr-3"
+      [disabled]="loading"
+      *ngIf="showRefreshButton"
+      (click)="refreshList()"
+    >
+      <i class="fal fa-sync-alt"></i>
+    </button>
+  </div>
+  <div panelContent>
+    <smart-table-toolbar
+      (filterUpdated)="updateFilter($event)"
+      (columnUpdated)="toggleCol($event)"
+      [data]="allData"
+      [columns]="allColumns"
+    ></smart-table-toolbar>
+
+    <div class="table-container">
+      <table class="table table-striped table-hover table-responsive-md">
+        <thead>
+          <tr>
+            <th scope="col">No</th>
+            <th scope="col" *ngFor="let col of filteredColumns">{{ col.title }}</th>
+            <th *ngIf="showDropDownOptions || showDeleteButtons"></th>
+          </tr>
+        </thead>
+        <tbody [style.min-height.px]="pageSize * 60">
+          <tr *ngFor="let row of filteredData; let rowIndex = index">
+            <td>{{ currentPage * pageSize + rowIndex + 1 }}</td>
+            <td *ngFor="let col of filteredColumns">
+              {{ col.name === 'createdStamp' ? (row[col.name] | timeago) : row[col.name] }}
+            </td>
+            <td *ngIf="showDropDownOptions || showDeleteButtons" style="max-width: 90px; min-width: 90px;">
+              <div
+                #dropdown="bs-dropdown"
+                *ngIf="showDropDownOptions && dropDownMenu.length > 0 && !row.hideDropDownOptions"
+                [insideClick]="true"
+                class="btn-group"
+                container="body"
+                dropdown
+              >
+                <button
+                  aria-controls="dropdown-list"
+                  aria-expanded="false"
+                  aria-haspopup="true"
+                  class="btn btn-primary btn-sm waves-effect waves-themed"
+                  data-toggle="dropdown"
+                  dropdownToggle
+                  type="button"
+                >
+                  <i class="fal fa-angle-down"></i>
+                </button>
+                <div
+                  *dropdownMenu
+                  class="dropdown-menu dropdown-menu-animated-right dropdown-menu-animated-right-listing"
+                  id="dropdown-list"
+                  role="menu"
+                >
+                  <a
+                    (click)="buttonClickedFn(item.name, row, dropdown)"
+                    *ngFor="let item of dropDownMenu"
+                    class="dropdown-item"
+                    smartStubClick
+                    >{{ item.label }}</a
+                  >
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="loading-div" *ngIf="loading">
+        <div *ngIf="loading" class="spinner-border text-secondary" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex justify-content-center p-3 " *ngIf="!loading && filteredData.length <= 0">No any data</div>
+    <smart-pagination-ex
+      [totalPages]="totalPages"
+      [totalElements]="totalElements"
+      (changePagination)="pageChanged($event)"
+      [itemsPerPage]="pageSize"
+      [pageNo]="pageNo"
+    ></smart-pagination-ex>
+  </div>
+</smart-panel>

@@ -1,0 +1,39 @@
+.page-sidebar {
+	background-color: $primary;
+	position: relative;
+	flex: 1 0 auto;
+	width: $nav-width;
+	max-width: $nav-width;
+    flex-direction: column;
+    display: flex;
+
+	z-index: $depth-nav;
+
+	will-change: left, right;
+
+	.page-logo {
+		background-color: #0e2649;
+		background-image: none;
+
+		.sidebarLogo {
+			width: 75%;
+		}
+	}
+
+	.sidebarLogo-sm {
+		display: none;
+	}
+
+	.info-card {
+		display: none;
+	}
+}
+
+.nav-function-minify {
+	.sidebarLogo {
+		display: none;
+	}
+	.sidebarLogo-sm {
+		display: block;
+	}
+}

@@ -1,0 +1,12 @@
+<header class="page-header" role="banner">
+  <!-- we need this logo when user switches to nav-function-top -->
+  <smart-logo></smart-logo>
+  <smart-settings-shortcut></smart-settings-shortcut>
+  <!-- DOC: mobile button appears during mobile width -->
+  <div class="hidden-lg-up">
+    <a href="#" (click)="openMobileNav($event)" class="header-btn btn press-scale-down" data-action="toggle"
+      data-class="mobile-nav-on">
+      <i class="ni ni-menu"></i>
+    </a>
+  </div>
+</header>

@@ -1,0 +1,8 @@
+{
+  "name": "Test Admin",
+  "short_name": "Test Admin",
+  "icons": [],
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "display": "standalone"
+}

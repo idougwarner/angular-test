@@ -1,0 +1,9 @@
+/node_modules
+*.env
+.idea
+build.sh
+package-lock.json
+package-lock.json
+/dist/
+/.project
+/.vscode

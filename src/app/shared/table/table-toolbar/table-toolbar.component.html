@@ -1,0 +1,31 @@
+<div class="row my-4">
+  <div class="col-md-4" *ngIf="showFilter">
+    <label class="d-flex">
+      <div
+        class="input-group-text d-inline-flex width-3 align-items-center justify-content-center border-bottom-right-radius-0 border-top-right-radius-0 border-right-0">
+        <i class="fal fa-search"></i>
+      </div>
+      <input (input)="updateFilter($event)" [(ngModel)]="filterString"
+        class="form-control border-top-left-radius-0 border-bottom-left-radius-0 ml-0 width-lg shadow-inset-1"
+        placeholder="Search" type="search">
+    </label>
+  </div>
+  <div class="col-md-8 d-flex justify-content-end listing-header-buttons" *ngIf="showControls">
+    <div #dropdown="bs-dropdown" [insideClick]="true" class="btn-group" dropdown>
+      <button class="btn btn-light" dropdownToggle type="button">
+        Column Visibility
+        <i class="fal fa-angle-down"></i>
+      </button>
+      <div *dropdownMenu class="dropdown-menu" id="dropdown-columns" role="menu">
+        <a (click)="toggleCol(item)" *ngFor="let item of allColumns" [class.selected]="isColSelected(item)"
+          class="dropdown-item" smartStubClick>{{item.title}}</a>
+      </div>
+    </div>
+
+    <button (click)="exportToCSV()" class="btn btn-light" type="button">CSV</button>
+    <button (click)="copyToClipboard()" class="btn btn-light" type="button">Copy</button>
+    <button (click)="print()" class="btn btn-light" type="button btn-icon">
+      <i class="fal fa-print"></i>
+    </button>
+  </div>
+</div>

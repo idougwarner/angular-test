@@ -1,0 +1,20 @@
+<div class="d-flex align-items-center">
+  <ol class="breadcrumb page-breadcrumb breadcrumb-arrow " *ngIf="vm$ | async as vm">
+    <li class="breadcrumb-item ">
+      <a [routerLink]="['/']" smartStubClick>
+        <img src="assets/img/logo-sm.png" alt="" class="home-icon">
+      </a>
+    </li>
+    <ng-container *ngIf="vm.state && vm.state.data && vm.state.data.breadcrumbs">
+      <li *ngFor="let crumb of vm.state.data.breadcrumbs; 
+        let i = index" [class.active]="vm.state.data.breadcrumbs.length === (i + 1)">
+        <a (click)="navigate(crumb, vm.state.url)" smartStubClick>
+          <span>{{getCrumbTitle(crumb)}}</span>
+        </a>
+      </li>
+    </ng-container>
+  </ol>
+  <div class="ml-auto mb-3 d-none d-sm-block">
+    <span>{{ date | date }}</span>
+  </div>
+</div>

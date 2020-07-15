@@ -1,0 +1,17 @@
+@import "../../../../scss/_modules/variables";
+  .listing-header-buttons {
+    > * {
+      margin: 0px 4px;
+      margin-bottom: 0.3rem;
+    }
+
+    :last-child {
+      margin-right: 0px;
+    }
+  }
+  
+  .dropdown-item {
+    &.selected {
+      background: $gray-300;
+    }
+  }

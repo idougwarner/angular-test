@@ -1,0 +1,104 @@
+@import "../../../../scss/_modules/variables";
+
+::ng-deep {
+  .datatable-header {
+    // background-color: $color-primary;
+    font-weight: bold;
+    // color: $white;
+  }
+
+  .datatable-footer {
+    margin-top: 1rem !important;
+    border-top: solid 1px gainsboro;
+    background: transparent !important;
+    color: black !important;
+  }
+  .ngx-datatable .datatable-body,
+  .ngx-datatable .datatable-header {
+    border: 1px solid #e9e9e9;
+  }
+  .ngx-datatable.bootstrap .datatable-footer .datatable-pager a {
+    color: $color-primary;
+  }
+  .ngx-datatable.bootstrap .datatable-footer .datatable-pager ul li:not(.disabled).active a,
+  .ngx-datatable.bootstrap .datatable-footer .datatable-pager ul li:not(.disabled):hover a {
+    background-color: $color-primary !important;
+    color: $white;
+  }
+  .ngx-datatable.bootstrap .datatable-body .datatable-body-row {
+    // cursor: pointer;
+    &:hover {
+      box-shadow: inset 1px 0 0 #dadce0, inset -1px 0 0 #dadce0, 0 1px 2px 0 rgba(60, 64, 67, 0.3),
+        0 1px 3px 1px rgba(60, 64, 67, 0.15);
+      z-index: 1;
+    }
+  }
+  .empty-row {
+    text-align: center;
+  }
+
+  .btn-icon {
+    margin: 0px 4px;
+
+    &:hover {
+      color: $white !important;
+    }
+  }
+
+  .dropdown-menu-animated-right-listing {
+    left: 0px !important;
+  }
+
+  .hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .progress-linear {
+    display: block;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    display: flex;
+    align-items: center;
+
+    .bar {
+      margin: auto;
+      border: 2px solid #f3f3f3;
+      border-radius: 50%;
+      border-top: 2px solid $color-primary;
+      width: 50px;
+      height: 50px;
+      -webkit-animation: spin 2s linear infinite; /* Safari */
+      animation: spin 2s linear infinite;
+    }
+  }
+
+
+  .datatable-footer-inner {
+    height: 20px !important;
+  }
+  .page-count {
+    display: none;
+  }
+}
+
+.table-container {
+  position: relative;
+  .loading-div {
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    z-index: 1;
+    background-color: #aab1bd33;
+  }
+}
